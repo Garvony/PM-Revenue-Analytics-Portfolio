@@ -1,19 +1,40 @@
 # ============================================================================
-# STAGE 3: AUTOMATED PROJECT RISK FLAGGER (Python + Pandas)
-# Goal: Clean messy project logs and output an automated Excel risk report.
+# INDEPENDENT PROJECT: AUTOMATED PROJECT RISK FLAGGER
+# Tools: Python, Pandas, NumPy
+#
+# Project brief
+# Build a repeatable reporting workflow that turns inconsistent project
+# activity logs into an executive-ready risk report. The finished analysis
+# should help a project manager identify projects that are spending heavily
+# while failing to meet their KPI targets.
+#
+# Your objectives
+# - Inspect and clean the source data before using it.
+# - Combine project budgets, spend, and KPI performance into one report.
+# - Define a transparent rule for identifying critical project risk.
+# - Export a reusable Excel deliverable and verify the resulting data.
+#
+# Expected deliverable
+# Create `Automated_Executive_Risk_Report.xlsx` in this folder. It should
+# contain one row per project, the calculated burn rate and ROI, and a
+# `risk_flag` that distinguishes critical risk from projects that are on track.
+#
+# Success criteria
+# - Project IDs match correctly after whitespace is removed.
+# - Missing spend values are handled using a documented, defensible value.
+# - Spend and KPI metrics are summarized at project level before the merge.
+# - Risk flags follow the stated burn-rate and KPI thresholds.
+# - The exported workbook can be opened and traced back to the source files.
 # ============================================================================
 import pandas as pd
 import numpy as np
 from pathlib import Path
 
-# --- SESSION 7 (45 Mins): Load & Clean Dirty Data ---
-# 1. Load '../01_Raw_Data/campaigns_projects.csv' into df_projects
-# 2. Load '../01_Raw_Data/monthly_spend_kpis_dirty_for_python.csv' into df_logs
-# 3. Strip leading/trailing whitespace from df_logs['project_id'] using .str.strip()
-# 4. Fill missing NaN values in df_logs['amount_spent'] with the median spend
-# 5. Print df_logs.info() to verify zero nulls remain.
+# --- Phase 1: Inspect and clean the source data ---
+# Load the project master data and the monthly activity log from
+# `01_Raw_Data`. Normalize project IDs, handle missing spend values, and
+# inspect the cleaned log so you can confirm the inputs are analysis-ready.
 
-# Write Session 7 code below:
 stage_dir = Path(__file__).resolve().parent
 raw_data_dir = stage_dir.parent / "01_Raw_Data"
 df_projects = pd.read_csv(raw_data_dir / "campaigns_projects.csv")
@@ -26,14 +47,16 @@ df_logs["amount_spent"] = df_logs["amount_spent"].fillna(
 df_logs.info()
 
 
-# --- SESSION 8 (45 Mins): Merge & Flag At-Risk Projects ---
-# 1. Group df_logs by 'project_id' to get total 'amount_spent' and average 'kpi_hit'
-# 2. Merge with df_projects on 'project_id'
-# 3. Create 'burn_rate_pct' = (amount_spent / budget_allocated) * 100
-# 4. Use np.where to create a 'risk_flag' column:
-#    - If burn_rate_pct > 80 and kpi_hit < 50 -> 'CRITICAL RISK'
-#    - Else -> 'ON TRACK'
-# 5. Export final dataframe to 'Automated_Executive_Risk_Report.xlsx'
+# --- Phase 2: Build the risk model and executive report ---
+# Summarize each project's total spend and average KPI performance, then
+# merge those metrics with the project master data.
+#
+# Risk rule:
+# - `burn_rate_pct > 80` and `kpi_hit < 50` -> `CRITICAL RISK`
+# - Otherwise -> `ON TRACK`
+#
+# Add burn rate and ROI calculations, export the final report, and review the
+# exported row count and file path as a final quality check.
 
 monthly_summary = (
     df_logs.groupby("project_id", as_index=False)
