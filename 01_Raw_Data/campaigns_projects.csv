@@ -1,0 +1,21 @@
+project_id,project_name,department,budget_allocated,revenue_generated,start_date,status
+P101,Q3 Paid Social Acquisition,Marketing,45000,135000,2026-06-01,Completed
+P102,Enterprise CRM Migration,Operations,80000,65000,2026-06-15,Completed
+P103,SME Onboarding Automation,Client Onboarding,30000,78000,2026-07-01,Completed
+P104,Influencer Affiliate Push,Marketing,55000,32000,2026-07-10,In Progress
+P105,Supply Chain Route Optimizer,Operations,95000,140000,2026-07-20,In Progress
+P106,B2B Outbound Lead Engine,Marketing,25000,92000,2026-08-01,Completed
+P107,Legacy Server Decommission,Operations,60000,40000,2026-08-05,Delayed
+P108,Self-Serve Checkout Redesign,Product Delivery,70000,185000,2026-08-12,Completed
+P109,Regional Brand Awareness TV,Marketing,110000,75000,2026-08-18,In Progress
+P110,VIP Client Fast-Track Portal,Client Onboarding,40000,48000,2026-08-25,In Progress
+P111,Mobile Checkout Bug Sprint,Product Delivery,20000,64000,2026-09-01,Completed
+P112,Warehouse Barcode Rollout,Operations,50000,38000,2026-09-05,In Progress
+P113,Search Engine Retargeting,Marketing,35000,115000,2026-09-10,Completed
+P114,Automated Billing Recovery,Product Delivery,45000,130000,2026-09-15,In Progress
+P115,Partner Channel Training,Client Onboarding,28000,19000,2026-09-20,Delayed
+P116,Q4 Holiday Promo Prep,Marketing,65000,85000,2026-09-25,In Progress
+P117,Vendor Contract Consolidation,Operations,32000,55000,2026-10-01,Completed
+P118,AI Helpdesk Deflection Pilot,Product Delivery,58000,41000,2026-10-05,In Progress
+P119,Enterprise SLA Dashboard,Client Onboarding,36000,72000,2026-10-10,In Progress
+P120,Cold Email Infrastructure,Marketing,18000,67000,2026-10-15,Completed
